@@ -1,0 +1,2 @@
+TEST=="/sys/class/graphics/fb0/virtual_size", PROGRAM=="/bin/grep -q '^800,1280' /sys/class/graphics/fb0/virtual_size", ATTRS{name}=="Goodix Capacitive TouchScreen", ENV{LIBINPUT_CALIBRATION_MATRIX}="5.2 0 0 0 3.2 0 0 0 1"
+TEST=="/sys/class/graphics/fb0/virtual_size", PROGRAM=="/bin/grep -q '^720,1280' /sys/class/graphics/fb0/virtual_size", ATTRS{name}=="Goodix Capacitive TouchScreen", ENV{LIBINPUT_CALIBRATION_MATRIX}="6 0 0 0 3.2 0 0 0 1"

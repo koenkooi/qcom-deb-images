@@ -1,0 +1,10 @@
+[Unit]
+Description=Provides bindings for volumeup and volumedown keys on boot
+After=multi-user.target
+
+[Service]
+Type=oneshot
+ExecStart=/opt/arduino/scripts/keybinding_check.sh
+
+[Install]
+WantedBy=multi-user.target

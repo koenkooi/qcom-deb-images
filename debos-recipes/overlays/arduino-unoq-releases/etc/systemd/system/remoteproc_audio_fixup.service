@@ -1,0 +1,10 @@
+[Unit]
+Description=Restarts remoteproc if audio load is failing
+Before=sound.target
+
+[Service]
+Type=oneshot
+ExecStart=/opt/arduino/scripts/restart_remoteproc_audio.sh
+
+[Install]
+WantedBy=basic.target
