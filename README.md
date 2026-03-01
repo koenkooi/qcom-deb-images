@@ -320,3 +320,9 @@ We'd love to hear if you run into issues or have ideas for improvements. [Report
 ## License
 
 This project is licensed under the [BSD-3-clause License](https://spdx.org/licenses/BSD-3-Clause.html). See [LICENSE.txt](LICENSE.txt) for the full license text.
+
+### Third-Party Components
+
+This repository functions as an aggregate of various works. While the core recipes and scripts are BSD-licensed, some included third-party components (such as binaries, firmware, or external tools) are distributed under their own respective licenses (e.g., GPL, MIT, or proprietary).
+
+Please refer to the LICENSE, COPYING, or README files within specific subdirectories for the terms applicable to those components.

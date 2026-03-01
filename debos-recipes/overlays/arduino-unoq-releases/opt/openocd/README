@@ -1,0 +1,3 @@
+The files in this folder are part of the OpenOCD project and are licensed under the GPL-2.0-or-later (see COPYING and LICENSE in this folder). Source code for this specific build of OpenOCD is available at: https://github.com/facchinm/OpenOCD/tree/jomla, commit e6a2c12f41c9d1131b980c47af7517b4a5aca110.
+
+The scripts under bin/arduino-*.sh are custom tools provided by Arduino under the BSD-3-Clause license.
