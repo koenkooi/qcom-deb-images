@@ -1,0 +1,78 @@
+diff -Nru webkit2gtk-2.48.3/debian/changelog webkit2gtk-2.48.3/debian/changelog
+--- webkit2gtk-2.48.3/debian/changelog	2025-05-28 23:56:24.000000000 +0000
++++ webkit2gtk-2.48.3/debian/changelog	2025-07-24 17:43:07.000000000 +0000
+@@ -1,3 +1,12 @@
++webkit2gtk (2.48.3-1qcom1) trixie; urgency=medium
++
++  * Get rid of gst-plugins-bad and libavif deps.
++    - Pass -DUSE_AVIF=OFF -DUSE_GSTREAMER_TRANSCODER=OFF to cmake and
++      demote corresponding plugins to Suggests unconditionally.
++    - Drop libgstreamer-plugins-bad1.0-dev and libavif-dev build-deps.
++
++ -- Loïc Minier <loic.minier@oss.qualcomm.com>  Thu, 24 Jul 2025 17:43:07 +0000
++
+ webkit2gtk (2.48.3-1) unstable; urgency=high
+ 
+   * New upstream release (Closes: #1106164).
+diff -Nru webkit2gtk-2.48.3/debian/control webkit2gtk-2.48.3/debian/control
+--- webkit2gtk-2.48.3/debian/control	2025-05-28 23:56:24.000000000 +0000
++++ webkit2gtk-2.48.3/debian/control	2025-07-24 17:43:07.000000000 +0000
+@@ -39,7 +39,6 @@
+                flex,
+                ruby:native,
+                unifdef,
+-               libavif-dev,
+                libjpeg-dev,
+                libopenjp2-7-dev,
+                libpng-dev,
+@@ -48,7 +47,6 @@
+                libxt-dev,
+                libgstreamer1.0-dev,
+                libgstreamer-plugins-base1.0-dev,
+-               libgstreamer-plugins-bad1.0-dev,
+                libenchant-2-dev,
+                libsecret-1-dev,
+                gobject-introspection,
+diff -Nru webkit2gtk-2.48.3/debian/control.in webkit2gtk-2.48.3/debian/control.in
+--- webkit2gtk-2.48.3/debian/control.in	2025-05-28 23:56:24.000000000 +0000
++++ webkit2gtk-2.48.3/debian/control.in	2025-07-24 17:43:07.000000000 +0000
+@@ -38,7 +38,6 @@
+                flex,
+                ruby:native,
+                unifdef,
+-               libavif-dev,
+                libjpeg-dev,
+                libopenjp2-7-dev,
+                libpng-dev,
+@@ -47,7 +46,6 @@
+                libxt-dev,
+                libgstreamer1.0-dev,
+                libgstreamer-plugins-base1.0-dev,
+-               libgstreamer-plugins-bad1.0-dev,
+                libenchant-2-dev,
+                libsecret-1-dev,
+                gobject-introspection,
+diff -Nru webkit2gtk-2.48.3/debian/rules webkit2gtk-2.48.3/debian/rules
+--- webkit2gtk-2.48.3/debian/rules	2025-05-28 23:56:24.000000000 +0000
++++ webkit2gtk-2.48.3/debian/rules	2025-07-24 17:43:07.000000000 +0000
+@@ -123,17 +123,9 @@
+ 	EXTRA_CMAKE_ARGUMENTS += -DUSER_AGENT_BRANDING="Ubuntu"
+ endif
+ 
+-# libavif & gst-plugins-bad1.0 are not in Ubuntu main
+-ifeq ($(shell dpkg-vendor --derives-from Ubuntu && echo yes),yes)
+-	EXTRA_CMAKE_ARGUMENTS += -DUSE_AVIF=OFF -DUSE_GSTREAMER_TRANSCODER=OFF
+-endif
+-
+-# gstreamer1.0-libav and gstreamer1.0-plugins-bad are not in Ubuntu "main"
+-ifeq ($(shell dpkg-vendor --derives-from Ubuntu && echo yes),yes)
+-	DH_GENCONTROL_ARGS += -Vgst:Suggests="gstreamer1.0-libav, gstreamer1.0-plugins-bad"
+-else
+-	DH_GENCONTROL_ARGS += -Vgst:Recommends="gstreamer1.0-libav, gstreamer1.0-plugins-bad"
+-endif
++# disable libavif & gst-plugins-bad1.0
++EXTRA_CMAKE_ARGUMENTS += -DUSE_AVIF=OFF -DUSE_GSTREAMER_TRANSCODER=OFF
++DH_GENCONTROL_ARGS += -Vgst:Suggests="gstreamer1.0-libav, gstreamer1.0-plugins-bad"
+ 
+ # flite is not in Ubuntu main LP: #2096940
+ ifeq ($(shell dpkg-vendor --derives-from Ubuntu && echo yes),yes)

@@ -1,0 +1,4 @@
+dsc_url: "https://snapshot.debian.org/archive/debian/20250529T022911Z/pool/main/w/webkit2gtk/webkit2gtk_2.48.3-1.dsc"
+dsc_sha256sum: "844f6031e601f8619ee1e598cb648ce032892cc5fb107e26ced17a1a64a12eef"
+debdiff_file: "webkit2gtk_2.48.3-1qcom1.debdiff"
+suite: "trixie"
