@@ -394,6 +394,7 @@ actions:
     description: Install a comfortable package set
     recommends: true
     packages:
+      - alsa-ucm-conf
       - alsa-utils
       - clinfo
       # used to debug clock issues
