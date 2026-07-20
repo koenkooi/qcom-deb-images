@@ -229,7 +229,7 @@ actions:
 )}}
 {{- $boards = append $boards (dict
     "name" "qrb2210-arduino-uno-q"
-    "silicon_family" "qcm2290"
+    "soc_id" "qcm2290"
     "platform" "qrb2210-unoq/emmc"
     "boot_binaries_download" (dict
         "description" "Arduino UNO Q rescue image"
